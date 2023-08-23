@@ -175,6 +175,9 @@ body {
 	margin: 5px;
 	box-shadow: 5px 5px 0 black;
 }
+.cell:hover {
+	border: 2px solid white;
+}
 .cell-content {
 	position: absolute;
 	top: 50%;

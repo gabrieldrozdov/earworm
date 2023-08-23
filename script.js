@@ -193,7 +193,7 @@ class GridCell {
 		cellContentChild.appendChild(cellContentChildItem);
 	
 		// Set initial properties for new step item/container
-		cellContentChild.style.transform = `scale(0)`;
+		cellContentChild.style.transform = `translateY(-100%) scale(0)`;
 		cellContentChild.style.zIndex = 9;
 		cellContentChild.dataset.pos = 0;
 
@@ -232,7 +232,7 @@ class GridCell {
 	
 		// Animate transform by adding delay
 		setTimeout(() => {
-			cellContentChild.style.transform = `scale(1)`;
+			cellContentChild.style.transform = `translateY(0) scale(1)`;
 		}, 50)
 	
 		// Style and re-position previous steps
