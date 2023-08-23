@@ -1,0 +1,289 @@
+@font-face {
+	font-family: "Apfel";
+	src: url("ApfelGrotezk-Fett.woff2");
+}
+* {
+	font-family: "Apfel", sans-serif;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	user-select: none;
+}
+body {
+	background-color: black;
+	color: white;
+}
+.container {
+	width: 100vw;
+	height: 100dvh;
+	display: grid;
+	grid-template-rows: 1fr 45px;
+	border: 5px solid black;
+}
+
+/* Title */
+@keyframes title {
+	0% {
+		transform: translateY(-100%) rotate(-10deg);
+		color: black;
+	}
+	100% {
+		transform: translateY(100%) rotate(10deg);
+		color: transparent;
+	}
+}
+@keyframes title-background {
+	0% {
+		background-color: hsl(0deg, 100%, 50%);
+	}
+	8% {
+		background-color: hsl(30deg, 100%, 50%);
+	}
+	16% {
+		background-color: hsl(60deg, 100%, 50%);
+	}
+	24% {
+		background-color: hsl(90deg, 100%, 50%);
+	}
+	32% {
+		background-color: hsl(120deg, 100%, 50%);
+	}
+	40% {
+		background-color: hsl(150deg, 100%, 50%);
+	}
+	48% {
+		background-color: hsl(180deg, 100%, 50%);
+	}
+	56% {
+		background-color: hsl(210deg, 100%, 50%);
+	}
+	64% {
+		background-color: hsl(240deg, 100%, 50%);
+	}
+	72% {
+		background-color: hsl(270deg, 100%, 50%);
+	}
+	80% {
+		background-color: hsl(300deg, 100%, 50%);
+	}
+	88% {
+		background-color: hsl(330deg, 100%, 50%);
+	}
+	100% {
+		background-color: hsl(360deg, 100%, 50%);
+	}
+}
+.title {
+	position: absolute;
+	font-size: 7vw;
+	width: 100%;
+	height: 100%;
+	padding: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1em;
+	background-color: white;
+	-webkit-text-stroke: .02em black;
+	animation: title-background 10s infinite linear;
+}
+.title span {
+	animation-name: title;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-timing-function: ease-in-out;
+	display: inline-block;
+}
+
+/* Controls */
+.controls {
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	display: flex;
+	gap: 5px;
+	padding: 5px;
+	align-items: center;
+	justify-content: center;
+	overflow-x: scroll;
+	border-top: 5px solid black;
+}
+.controls button {
+	aspect-ratio: 1/1;
+	font-size: 12px;
+	height: 100%;
+	border: unset;
+	background-color: black;
+	color: white;
+	transition: .2s;
+	cursor: pointer;
+	/* border-radius: 50%; */
+	border: 2px solid black;
+}
+.controls button:hover {
+	background-color: white;
+	color: black;
+	transform: scale(1.1);
+}
+.controls button:active {
+	transform: scale(0.9);
+}
+.divider {
+	flex-shrink: 0;
+	height: 100%;
+	background-color: black;
+	width: 5px;
+	margin: 0 10px;
+	border-radius: 10px;
+}
+
+/* Mouths */
+.grid {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+	background-color: black;
+	gap: 5px;
+}
+.cell {
+	flex: 1 0 33%;
+	position: relative;
+	overflow: hidden;
+}
+.mouth-container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	pointer-events: none;
+	transform: rotate(15deg);
+	transition: transform .5s;
+	mix-blend-mode: multiply;
+}
+.mouth-container-child {
+	transition: transform .4s cubic-bezier(0.16, 1, 0.3, 1), filter .1s, opacity .3s;
+	position: absolute;
+	width: 0;
+	height: 0;
+}
+.mouth-container-child-img {
+	height: var(--size);
+	transition: height .2s;
+	filter: drop-shadow(0, 10px, rgba(0,0,0,.5));
+}
+
+/* Mouth controls */
+:root {
+	--button-size: 30px;
+	--font-size: 16px;
+}
+.mouth-controls {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	width: calc(100% - 20px);
+	justify-content: end;
+	flex-wrap: wrap;
+	opacity: 0;
+	transition: opacity .2s;
+	text-transform: uppercase;
+	/* mix-blend-mode: difference; */
+}
+.cell:hover .mouth-controls {
+	opacity: 1;
+}
+.mouth-controls-row {
+	flex-wrap: wrap;
+	display: flex;
+	align-items: center;
+	column-gap: 20px;
+	row-gap: 10px;
+	justify-content: end;
+}
+.mouth-controls-row div {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 5px;
+	justify-content: end;
+	font-size: var(--font-size);
+}
+.mouth-controls button {
+	font-size: calc(var(--font-size) - 4px);
+	flex-shrink: 0;
+	/* border-radius: 50%; */
+	background-color: transparent;
+	width: var(--button-size);
+	height: var(--button-size);
+	border: 2px solid white;
+	color: white;
+	cursor: pointer;
+	transition: transform .2s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: "Apfel", sans-serif;
+}
+.mouth-controls button:hover {
+	background-color: white;
+	color: black;
+	transform: scale(1.1);
+}
+.mouth-controls button:active {
+	transform: scale(0.9);
+}
+.mouth-controls button[data-active="1"] {
+	background-color: white;
+	color: black;
+}
+
+/* Remove button */
+.remove {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: opacity .2s, transform .2s;
+	text-transform: uppercase;
+	/* mix-blend-mode: difference; */
+	/* border-radius: 50%; */
+	background-color: transparent;
+	width: var(--button-size);
+	height: var(--button-size);
+	font-size: var(--font-size);
+	border: 2px solid white;
+	color: white;
+	cursor: pointer;
+	font-family: "Apfel", sans-serif;
+	opacity: 0;
+}
+.cell:hover .remove {
+	opacity: 1;
+}
+.remove:hover {
+	background-color: white;
+	color: black;
+	transform: scale(1.1);
+}
+.remove:active {
+	transform: scale(0.9);
+}
+
+/* Mobile styles */
+@media only screen and (max-width: 800px) {
+	:root {
+		--button-size: 20px;
+		--font-size: 12px;
+	}
+	.controls {
+		justify-content: start;
+	}
+}
