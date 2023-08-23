@@ -5,20 +5,31 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Earworm</title>
-	<link rel="stylesheet" href="style.css">
-	<link rel="icon" type="image/png" href="../assets/ui/favicon.png" />
 
+	<meta name="author" content="Gabriel Drozdov">
+	<meta name="keywords" content="HTML, CSS, JavaScript, Music, Creative Coding, Typography">
+	<meta name="description" content="earworm wants to make music in your ear.">
+	<meta property="og:url" content="https://earworm.noreplica.com/">
+	<meta name="og:title" property="og:title" content="Earworm">
+	<meta property="og:description" content="earworm wants to make music in your ear.">
+	<meta property="og:image" content="assets/meta/opengraph.jpg">
+	<link rel="icon" type="image/png" href="assets/meta/favicon.png" />
+
+	<link rel="stylesheet" href="style.css">
 	<script src="Tone.min.js"></script>
 </head>
 <body>
 
 	<div class="container">
-		<main class="grid">
-			<h1 class="title">EARWORM</h1>
-		</main>
+		<header class="title-container">
+			<h1 class="title">earworm</h1>
+		</header>
+		<main class="grid"></main>
 		<nav class="controls">
+			<button onclick="openInfo()">?</button>
+			<div class="divider"></div>
 			<button id="clear">X</button>
-			<button id="randomize">?</button>
+			<button id="randomize">!</button>
 			<button id="generate">+</button>
 			<div class="divider"></div>
 			<button class="preset" data-preset="C">C</button>
@@ -34,6 +45,22 @@
 			<button class="preset" data-preset="A#">A#</button>
 			<button class="preset" data-preset="B">B</button>
 		</nav>
+
+		<div class="info">
+			<h2>this is earworm</h2>
+			<p>earworm is a worm that goes into your ear. it’s a living thing and wants to play with you.</p>
+
+			<h2>how to play with earworm?</h2>
+			<p>thanks for asking. earworm likes to sing. make an earworm by clicking the letters on the bottom. earworm will sing in the musical key you click. right-click instead to make music sad.</p>
+			<p>you want earworm to sing something else? hover over earworms you create to see options. kill earworm with x at top. change options, change earworm, change music, change life.</p>
+
+			<h2>who is earworm?</h2>
+			<p>thanks for asking. earworm is <a href="https://www.gabrieldrozdov.com/" target="_blank">gabriel drozdov</a>. earworm font is apfel grotesk by <a href="https://www.luigigorlero.com/" target="_blank">luigi gorlero</a> from <a href="https://www.collletttivo.it/" target="_blank">collletttivo</a>.</p>
+
+			<h2>anything else?</h2>
+			<p>no. stop asking.</p>
+			<button onclick="closeInfo()">go back to earworm now</button>
+		</div>
 	</div>
 
 	<script src="script.js"></script>
