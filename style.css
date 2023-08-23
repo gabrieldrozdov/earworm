@@ -92,12 +92,12 @@ body {
 @keyframes title-worm {
 	0% {
 		transform: translateY(-100%) rotate(-10deg);
-		color: yellow;
+		color: pink;
 		text-shadow: 5px 5px 0 black;
 	}
 	100% {
 		transform: translateY(100%) rotate(10deg);
-		color: greenyellow;
+		color: yellow;
 		text-shadow: -5px 5px 0 black;
 	}
 }
@@ -222,6 +222,7 @@ body {
 	flex-wrap: wrap;
 	opacity: 0;
 	transition: opacity .2s;
+	z-index: 9;
 }
 .cell:hover .cell-controls {
 	opacity: 1;
@@ -281,6 +282,7 @@ body {
 	cursor: pointer;
 	font-family: "Apfel", sans-serif;
 	opacity: 0;
+	z-index: 9;
 }
 .cell:hover .remove {
 	opacity: 1;
