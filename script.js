@@ -91,10 +91,10 @@ class GridCell {
 					<button class="sound" data-sound="t">t</button>
 					<button class="sound" data-sound="k">k</button>
 				</div>
-				<div>
+				<!-- <div>
 					<p>voice</p>
 					<button class="voice" data-voice="gab" data-active="1">gab</button>
-				</div>
+				</div> -->
 			</div>
 			<button class="remove">X</button>
 		`
@@ -429,7 +429,7 @@ function randomize(key) {
 let controlsGenerate = controls.querySelector("#generate");
 generate.addEventListener('click', () => {
 	if (totalCells < maxCount) {
-		cells[id] = new GridCell(['gab'], undefined, undefined, undefined, randomNotes(), randomSounds());
+		cells[id] = new GridCell([], 800, 20, 3, [], []);
 		totalCells++;
 	}
 	checkTitle();
@@ -564,5 +564,3 @@ function discardElement(element) {
     // Empty the garbage bin
     garbageBin.innerHTML = "";
 }
-
-// make universal timing and sync all mouths

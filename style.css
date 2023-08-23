@@ -11,6 +11,7 @@
 	touch-action: manipulation;
 }
 body {
+	background-color: pink;
 	color: white;
 }
 .container {
@@ -218,7 +219,6 @@ body {
 	flex-wrap: wrap;
 	opacity: 0;
 	transition: opacity .2s;
-	/* mix-blend-mode: difference; */
 }
 .cell:hover .cell-controls {
 	opacity: 1;
@@ -278,7 +278,6 @@ body {
 	cursor: pointer;
 	font-family: "Apfel", sans-serif;
 	opacity: 0;
-	/* mix-blend-mode: difference; */
 }
 .cell:hover .remove {
 	opacity: 1;
@@ -302,7 +301,7 @@ body {
 	transform: scale(0) rotate(-180deg);
 	z-index: 99999;
 	transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
-	border: 20px solid black;
+	border: 10px solid black;
 	background-color: pink;
 	text-align: center;
 	color: black;
@@ -338,6 +337,7 @@ body {
 	font-size: 60px;
 	transition: .2s;
 	cursor: pointer;
+	color: black;
 }
 .info button:hover {
 	background-color: black;
