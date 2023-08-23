@@ -24,11 +24,10 @@ class GridCell {
 		id++;
 
 		this.voices = setVoice || ['gab'];
-		this.tempo = setTempo || Math.random()*1000+250;
+		this.tempo = setTempo || Math.floor(Math.floor(Math.random()*10)*100+250);
 		this.step = 0;
 		this.stepRotation = 0;
-		this.rotation = Math.floor(Math.random()*360);
-		this.trail = 15;
+		this.trail = 10;
 		this.size = setVolume || Math.floor(Math.random()*20+5);
 		this.paused = false;
 		this.octave = setOctave || Math.floor(Math.random()*4+1);
@@ -226,7 +225,7 @@ class GridCell {
 		// Set position of new item
 		this.stepRotation += Math.round(Math.random()*50-25);
 		cellContentChildItem.dataset.rotation = this.stepRotation;
-		cellContentChildItem.style.transform = `rotate(${cellContentChildItem.dataset.rotation}deg) scale(${5.5-this.octave})`;
+		cellContentChildItem.style.transform = `rotate(${cellContentChildItem.dataset.rotation}deg) scale(${(5.5-this.octave)/2})`;
 	
 		// Add finished node to live div
 		this.content.appendChild(cellContentChild);
@@ -243,7 +242,7 @@ class GridCell {
 			if (step.dataset.pos >= this.trail) { // Remove oldest
 				step.style.opacity = 0;
 				setTimeout(() => {
-					step.remove();
+					discardElement(step);
 				}, 500)
 			} else if (step != cellContentChild && pos > 0) {
 				let ratio = pos/this.trail;
@@ -254,9 +253,6 @@ class GridCell {
 			}
 			step.dataset.pos = pos + 1;
 		}
-	
-		this.rotation += Math.floor(Math.random()*6-3);
-		// this.content.style.transform = `rotate(${this.rotation}deg)`;
 
 		setTimeout(() => {
 			if (this.paused == false) {
@@ -293,7 +289,7 @@ class GridCell {
 		}
 	}
 	tempoDown() {
-		if (this.tempo < 1500) {
+		if (this.tempo < 1250) {
 			this.tempo += 50;
 		}
 	}
@@ -323,7 +319,7 @@ class GridCell {
 	}
 	deleteSelf() {
 		this.paused = true;
-		this.cell.remove();
+		discardElement(this.cell);
 		totalCells--;
 		checkTitle();
 	}
@@ -557,6 +553,16 @@ function openInfo() {
 function closeInfo() {
 	let info = document.querySelector('.info');
 	info.dataset.active = 0;
+}
+
+// Remove elements to prevent lag
+let garbageBin = document.createElement('div');
+garbageBin.style.display = 'none'; // Make sure it is not displayed
+document.body.appendChild(garbageBin);
+function discardElement(element) {
+    garbageBin.appendChild(element);
+    // Empty the garbage bin
+    garbageBin.innerHTML = "";
 }
 
 // make universal timing and sync all mouths
