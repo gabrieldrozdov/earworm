@@ -18,6 +18,7 @@ body {
 	width: 100vw;
 	height: 100dvh;
 	position: relative;
+	overflow: hidden;
 }
 
 /* Title */
